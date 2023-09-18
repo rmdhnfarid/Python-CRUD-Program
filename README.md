@@ -1,4 +1,4 @@
-RUD, which stands for Create, Read, Update, and Delete, is a fundamental set of operations in computer programming and database management. It refers to the basic functions that can be performed on a database or data storage system:
+CRUD, which stands for Create, Read, Update, and Delete, is a fundamental set of operations in computer programming and database management. It refers to the basic functions that can be performed on a database or data storage system:
 
 Create: This operation allows you to add new data or records to a database. It involves inserting new information into the system, typically with the help of an "insert" command or function.
 
