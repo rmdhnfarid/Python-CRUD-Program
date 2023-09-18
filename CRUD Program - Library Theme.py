@@ -1,253 +1,243 @@
-daftarbuku = [{'No' : '001',
-        'Judul' : 'Laskar Pelangi',
-        'Penulis' : 'Andrea Hirata',
-        'Penerbit' : 'Bentang Pustaka',
-        'Kategori' : 'Novel',
-        'Ketersediaan' : 'Tersedia'
+daftar_buku = [{'KODE' : '001',
+        'JUDUL' : 'Laskar Rainbow',
+        'PENULIS' : 'Andrea Hirata',
+        'PENERBIT' : 'Bentang Pustaka',
+        'KATEGORI' : 'Novel',
+        'STATUS' : 'Tersedia'
     },
-    {
-        'No' : '002',
-        'Judul' : 'Kambing Jantan',
-        'Penulis' : 'Raditya Dika',
-        'Penerbit' : 'GagasMedia',
-        'Kategori' : 'Komedi',
-        'Ketersediaan' : 'Tidak Tersedia'
-    },
-    {
-        'No' : '003',
-        'Judul' : 'Soekarno : Biografi Singkat 1901 - 1970', 
-        'Penulis' : 'Taufik Adi Susilo',
-        'Penerbit' : 'GARASI',
-        'Kategori' : 'Biografi',
-        'Ketersediaan' : 'Tersedia'},
-    {
-        'No' : '004',
-        'Judul' : 'Solo Leveling',
-        'Penulis' : 'Chugong',
-        'Penerbit' : 'D&C Media',
-        'Kategori' : 'Fiksi',
-        'Ketersediaan' : 'Tidak Tersedia'},
-    {
-        'No' : '005',
-        'Judul' : 'One-Punch Man Vol 1',
-        'Penulis' : 'One',
-        'Penerbit' : 'Shueisha',
-        'Kategori' : 'Komik',
-        'Ketersediaan' : 'Tersedia'
-    }
 ]
 
-# DAFTAR BUKU AWAL
-def showlistupdate(listdata, x, newdata):
-    print('=========== Daftar Buku ===========')
-    print('|No\t| Judul\t| Penulis\t| Penerbit\t| Kategori\t| Ketersediaan\t|')
-    if x == 1:
-        for i in range(len(listdata)):
-            print('{}\t| {}\t| {}\t| {}\t| {}\t|'.format(newdata,listdata[i]['Judul'], listdata[i]['Penulis'], listdata[i]['Penerbit'], listdata[i]['Kategori'], listdata[i]['Ketersediaan']))
-    elif x == 2:
-         for i in range(len(listdata)):
-            print('{}\t| {}\t| {}\t| {}\t| {}\t|'.format(newdata,listdata[i]['No'], listdata[i]['Penulis'], listdata[i]['Penerbit'], listdata[i]['Kategori'], listdata[i]['Ketersediaan']))
-    elif x == 3:
-         for i in range(len(listdata)):
-            print('{}\t| {}\t| {}\t| {}\t| {}\t|'.format(newdata,listdata[i]['No'], listdata[i]['Judul'], listdata[i]['Penerbit'], listdata[i]['Kategori'], listdata[i]['Ketersediaan']))
-    elif x == 4:
-         for i in range(len(listdata)):
-            print('{}\t| {}\t| {}\t| {}\t| {}\t|'.format(newdata,listdata[i]['No'], listdata[i]['Judul'], listdata[i]['Penulis'], listdata[i]['Kategori'], listdata[i]['Ketersediaan']))
-    elif x == 5:
-         for i in range(len(listdata)):
-            print('{}\t| {}\t| {}\t| {}\t| {}\t|'.format(newdata,listdata[i]['No'], listdata[i]['Judul'], listdata[i]['Penulis'], listdata[i]['Penerbit'], listdata[i]['Ketersediaan']))
-    elif x == 6:
-         for i in range(len(listdata)):
-            print('{}\t| {}\t| {}\t| {}\t| {}\t|'.format(newdata,listdata[i]['No'], listdata[i]['Judul'], listdata[i]['Penulis'], listdata[i]['Penerbit'], listdata[i]['Kategori']))
+# FUNGSI LIST BUKU
+def listbuku(databuku1):
+    for i in range(len(databuku1)) :
+        print('\n\tKODE: {} JUDUL: {} PENULIS: {} PENERBIT: {} KATEGORI: {} STATUS: {}'.format(databuku1[i]['KODE'], databuku1[i]['JUDUL'], databuku1[i]['PENULIS'], databuku1[i]['PENERBIT'], databuku1[i]['KATEGORI'], databuku1[i]['STATUS']))
+
+# FUNGSI FILTER BUKU
+def filter_buku(databuku2):
+    filter_list = []
+    for data in daftar_buku:
+        if data['KODE'] == str(databuku2):
+            filter_list.append(data)
+    return filter_list
 
 # FUNGSI UPDATE
-def updatebarang(data, kolom, newdata2):
-    inputupdatebarang = (input(' apakah data sudah benar? (Ya/Tidak): ')).capitalize()
-    if inputupdatebarang == 'Ya':
-        data[0][kolom] = newdata2
-        print('data sudah diperbarui')
+def updatebuku(data, Kategori_Pilih, databaru):
+    inputan_updatebuku = input('\nApakah Data Sudah Benar? (Ya/Tidak): ').capitalize()
+    if inputan_updatebuku == 'Ya':
+        data[0][Kategori_Pilih] = databaru
+        print('\nData Sudah Diperbarui')
     else:
-        print('data tidak diperbarui')
+        print('\nData Tidak Diperbarui')
 
-# TABEL BUKU
-def showlist(listdata):
-    print('============ Daftar Buku ============')
-    print('|No\t| Judul\t| Penulis\t| Penerbit\t| Kategori\t| Ketersediaan\t|')
-    for i in range(len(listdata)) :
-        print('|{}\t| {}\t| {}\t| {}\t| {}\t| {}\t|'.format(listdata[i]['No'], listdata[i]['Judul'], listdata[i]['Penulis'], listdata[i]['Penerbit'], listdata[i]['Kategori'], listdata[i]['Ketersediaan']))
+# FUNGSI LIST UPDATE
+def listbuku_update(listbuku, Nomor_Kategori, dataupdate):
+    if Nomor_Kategori == 1:
+        for i in range(len(listbuku)):
+            print('\n KODE: {} JUDUL: {} PENULIS: {} PENERBIT: {} KATEGORI: {} STATUS: {}'.format(dataupdate,listbuku[i]['JUDUL'], listbuku[i]['PENULIS'], listbuku[i]['PENERBIT'], listbuku[i]['KATEGORI'], listbuku[i]['STATUS']))
+    elif Nomor_Kategori == 2:
+         for i in range(len(listbuku)):
+            print('\n KODE: {} JUDUL: {} PENULIS: {} PENERBIT: {} KATEGORI: {} STATUS: {}'.format(listbuku[i]['KODE'], dataupdate, listbuku[i]['PENULIS'], listbuku[i]['PENERBIT'], listbuku[i]['KATEGORI'], listbuku[i]['STATUS']))
+    elif Nomor_Kategori == 3:
+         for i in range(len(listbuku)):
+            print('\n KODE: {} JUDUL: {} PENULIS: {} PENERBIT: {} KATEGORI: {} STATUS: {}'.format(listbuku[i]['KODE'], listbuku[i]['JUDUL'], dataupdate, listbuku[i]['PENERBIT'], listbuku[i]['KATEGORI'], listbuku[i]['STATUS']))
+    elif Nomor_Kategori == 4:
+         for i in range(len(listbuku)):
+            print('\n KODE: {} JUDUL: {} PENULIS: {} PENERBIT: {} KATEGORI: {} STATUS: {}'.format(listbuku[i]['KODE'], listbuku[i]['JUDUL'], listbuku[i]['PENULIS'], dataupdate, listbuku[i]['KATEGORI'], listbuku[i]['STATUS']))
+    elif Nomor_Kategori == 5:
+         for i in range(len(listbuku)):
+            print('\n KODE: {} JUDUL: {} PENULIS: {} PENERBIT: {} KATEGORI: {} STATUS: {}'.format(listbuku[i]['KODE'], listbuku[i]['JUDUL'], listbuku[i]['PENULIS'], listbuku[i]['PENERBIT'], dataupdate, listbuku[i]['STATUS']))
+    elif Nomor_Kategori == 6:
+         for i in range(len(listbuku)):
+            print('\n KODE: {} JUDUL: {} PENULIS: {} PENERBIT: {} KATEGORI: {} STATUS: {}'.format(listbuku[i]['KODE'], listbuku[i]['JUDUL'], listbuku[i]['PENULIS'], listbuku[i]['PENERBIT'], listbuku[i]['KATEGORI'], dataupdate))
 
-# FILTER BUKU
-def searchlist(input):
-    searchlist = (list(filter(lambda data: data['No'] == str(input), daftarbuku)))
-    return searchlist
 
 # DAFTAR BUKU
 def read():
-    inputread = (int(input(''' Daftar Data Buku 
+    inputan_read = (int(input('''
+    Daftar Data Buku 
+
     1. Daftar Semua Buku
-    2. Cari Buku
-    3. Kembali
-    Masukkan no Menu yang Diinginkan: ''')))
-    if inputread == 1 and len(daftarbuku):
-        showlist(daftarbuku)
-    elif inputread == 2 and len(daftarbuku):
-        Nomorbuku = (input('Masukkan No Buku: '))
-        searchlist(Nomorbuku)
-        if len(searchlist(Nomorbuku)):
-            showlist(searchlist(Nomorbuku))
-        else:
-            print('Buku Tidak Ada')
-    elif inputread == 3:
+    2. Kembali
+
+    Masukkan Nomor Menu yang Diinginkan: ''')))
+    if inputan_read == 1 and len(daftar_buku):
+        listbuku(daftar_buku)
+    elif inputan_read == 2:
         menu()
     else:
-        print('Nomor yang Dimasukkan Tidak Sesuai')
+        print('\n\tNomor yang Dimasukkan Tidak Sesuai')
     read()
 
 # MENAMBAH BUKU
-def add():
-    inputadd = (int(input(''' Menambah Data Buku
-    1. Menambah Data Buku
-    2. Kembali
-    Masukkan no Menu yang Diinginkan: ''')))
-    if inputadd == 1:
-        nomorbukubaru = (input('Masukkan No Buku: '))
-        listvalue = [value for databuku1 in daftarbuku for value in databuku1]
-        if nomorbukubaru in listvalue:
-            print('Buku Sudah Ada')
-        else:
+def create():
+    inputan_create = (int(input('''
+        Menambah Data Buku
+        
+        1. Menambah Data Buku
+        2. Kembali
+        
+        Masukkan Nomor Menu yang Diinginkan: ''')))
+    if inputan_create == 1:
+            nomorbukubaru = input('\nKode: ')
+            for nobuku1 in daftar_buku:
+                if nobuku1['KODE'] == nomorbukubaru:
+                    print('\nKode Buku Sudah Terdaftar')
+                    create()
+                else:
+                    continue
             judulbaru = (input('Judul: '))
             penulisbaru = (input('Penulis: '))
             penerbitbaru = (input('Penerbit: '))
             kategoribaru = (input('Kategori: '))
-            ketersediaanbaru = (input('Ketersediaan: '))
+            ketersediaanbaru = (input('Status: '))
             daftarbukubaru = [{
-                'No' : nomorbukubaru,
-                'Judul' : judulbaru,
-                'Penulis' : penulisbaru,
-                'Penerbit' : penerbitbaru,
-                'Kategori' : kategoribaru,
-                "Ketersediaan" : ketersediaanbaru
+                'KODE' : nomorbukubaru,
+                'JUDUL' : judulbaru,
+                'PENULIS' : penulisbaru,
+                'PENERBIT' : penerbitbaru,
+                'KATEGORI' : kategoribaru,
+                'STATUS' : ketersediaanbaru
             }]
-            showlist(daftarbukubaru)
-            simpan = (input('Simpan Data Buku Baru (Ya/Tidak')).capitalize()
-            if simpan == 'Ya':
-                daftarbuku.extend(daftarbukubaru)
-                showlist(daftarbuku)
-                print('Data Buku Baru Sudah Disimpan')
+            listbuku(daftarbukubaru)
+            simpan = input('\nSimpan Data Buku Baru (Ya/Tidak): ').capitalize()
+            if simpan == 'Tidak':
+                print("\nData Buku Tidak Jadi Disimpan")
+            elif simpan == 'Ya':
+                print('\nData Buku Baru Sudah Disimpan')
+                daftar_buku.extend(daftarbukubaru)
+                create()    
             else:
-                print('Data Buku Baru Tidak Disimpan')
-    elif inputadd == 2:
+                print('\nMasukkan Ya atau Tidak')
+    elif inputan_create == 2:
         menu()
-    add()
+    else:
+        print('\n\tNomor yang Dimasukkan Tidak Sesuai')
+    create()
 
 # MENGUBAH BUKU
 def update():
-    inputupdate = (int(input(''' Mengubah Data Buku
+    inputan_update = (int(input('''
+    Mengubah Data Buku
+    
     1. Mengubah Data Buku
-    2. Kembali''')))
-    if inputupdate == 1:
-        updatebook = (input('Masukkan No Buku: '))
-        listvalue = [value for databuku1 in daftarbuku for value in databuku1]
-        if updatebook not in listvalue:
-            print('No Buku Tidak Ada')
-            update()
-        else:
-            searchlist(updatebook)
-            showlist(searchlist(updatebook))
-            inputupdate = (input('update data buku? (Ya/Tidak): ')).capitalize
-            if inputupdate == 'Ya':
-                inputkategori = int(input('''
-                pilihan ubah data:
-                1. No
+    2. Kembali
+    
+    Masukkan Nomor Menu Yang Diinginkan: ''')))
+    if inputan_update == 1:
+        input_update = input('\nMasukkan Kode Buku: ')
+        list_nobuku = [nobuku1['KODE'] for nobuku1 in daftar_buku]
+        if input_update in list_nobuku:
+                filter_buku(input_update)
+                listbuku(filter_buku(input_update))
+                inputan_update = (input('\nUpdate Data Buku? (Ya/Tidak): ')).capitalize()
+                if inputan_update == 'Ya':
+                    inputan_kategori = int(input('''
+                Pilihan Ubah Data:
+                
+                1. Kode
                 2. Judul
                 3. Penulis
                 4. Penerbit
                 5. Kategori
-                6. Ketersediaan
-                Masukkan no pilihan yang ingin diubah: '''))
-                if inputkategori == 1:
-                    masukkandata = input('masukkan data baru: ')
-                    showlistupdate(searchlist(updatebook),1,masukkandata)
-                    updatebarang(searchlist(updatebook), 'No', masukkandata)
-                elif inputkategori == 2:
-                    masukkandata = input('masukkan data baru: ')
-                    showlistupdate(searchlist(updatebook),2,masukkandata)
-                    updatebarang(searchlist(updatebook), 'Judul', masukkandata)
-                elif inputkategori == 3:
-                    masukkandata = input('masukkan data baru: ')
-                    showlistupdate(searchlist(updatebook),3,masukkandata)
-                    updatebarang(searchlist(updatebook), 'Penulis', masukkandata)
-                elif inputkategori == 4:
-                    masukkandata = input('masukkan data baru: ')
-                    showlistupdate(searchlist(updatebook),4,masukkandata)
-                    updatebarang(searchlist(updatebook), 'Penerbit', masukkandata)
-                elif inputkategori == 5:
-                    masukkandata = input('masukkan data baru: ')
-                    showlistupdate(searchlist(updatebook),5,masukkandata)
-                    updatebarang(searchlist(updatebook), 'Kategori', masukkandata)
-                elif inputkategori == 6:
-                    masukkandata = input('masukkan data baru: ')
-                    showlistupdate(searchlist(updatebook),6,masukkandata)
-                    updatebarang(searchlist(updatebook), 'Ketersediaan', masukkandata)
+                6. Status
+
+                Masukkan Nomor Pilihan yang Ingin Diubah: '''))
+                    if inputan_kategori == 1:
+                        update_keys = input('\nMasukkan Kode Baru: ')
+                        listbuku_update(filter_buku(input_update),1,update_keys)
+                        updatebuku(filter_buku(input_update), 'KODE', update_keys)
+                    elif inputan_kategori == 2:
+                        update_keys = input('\nMasukkan Judul Baru: ')
+                        listbuku_update(filter_buku(input_update),2,update_keys)
+                        updatebuku(filter_buku(input_update), 'JUDUL', update_keys)
+                    elif inputan_kategori == 3:
+                        update_keys = input('\nMasukkan Penulis Baru: ')
+                        listbuku_update(filter_buku(input_update),3,update_keys)
+                        updatebuku(filter_buku(input_update), 'PENULIS', update_keys)
+                    elif inputan_kategori == 4:
+                        update_keys = input('\nMasukkan Penerbit Baru: ')
+                        listbuku_update(filter_buku(input_update),4,update_keys)
+                        updatebuku(filter_buku(input_update), 'PENERBIT', update_keys)
+                    elif inputan_kategori == 5:
+                        update_keys = input('\nMasukkan Kategori Baru: ')
+                        listbuku_update(filter_buku(input_update),5,update_keys)
+                        updatebuku(filter_buku(input_update), 'KATEGORI', update_keys)
+                    elif inputan_kategori == 6:
+                        update_keys = input('\nMasukkan Status Baru: ')
+                        listbuku_update(filter_buku(input_update),6,update_keys)
+                        updatebuku(filter_buku(input_update), 'STATUS', update_keys)
+                    else:
+                        print('\nPilihan Tidak Tersedia')
                 else:
-                    print('pilihan tidak tersedia')
-    elif inputupdate == 2:
+                    update()
+        else:
+            print('\nData Tidak Ada')
+            update()
+    elif inputan_update == 2:
         menu()
-    update()       
+    else:
+        print('\n\tNomor yang Dimasukkan Tidak Sesuai')    
+    update()    
         
 # MENGHAPUS BUKU
 def delete():
-    inputdel = (int(input(''' Daftar Data Buku 
+    inputan_delete = (int(input('''
+    Daftar Data Buku 
+    
     1. Menghapus Data Buku
     2. Kembali
-    Masukkan no Menu yang Diinginkan: ''')))
-    if inputdel == 1:
-        showlist(daftarbuku)
-        delbookid = input('masukkan id yang ingin dihapus: ')
-        listvalue2 = [value2 for databuku in daftarbuku for value2 in databuku]
-        if delbookid not in listvalue2:
-            print('Buku tidak ada')
+    
+    Masukkan Nomor Menu yang Diinginkan: ''')))
+    if inputan_delete == 1:
+        listbuku(daftar_buku)
+        hapusbuku = input('\nMasukkan Kode Buku yang Ingin Dihapus: ')
+        list_nobuku = [nobuku1['KODE'] for nobuku1 in daftar_buku]
+        if hapusbuku not in list_nobuku:
+            print('\nBuku Tidak ada')
         else:
-            searchlist(delbookid)
-            showlist(searchlist(delbookid))
-            hapus = (input('hapus buku? (Ya/Tidak): ')).capitalize
+            filter_buku(hapusbuku)
+            listbuku(filter_buku(hapusbuku))
+            hapus = (input('\nHapus Buku? (Ya/Tidak): ')).capitalize()
             if hapus == 'Ya':
-                for e in searchlist(delbookid):
-                    daftarbuku.remove(e)
-                print('data buku sudah dihapus')
+                for i in filter_buku(hapusbuku):
+                    daftar_buku.remove(i)
+                print('\nData Buku Sudah Dihapus')
             else:
-                print('data buku tidak dihapus')
-    elif inputdel == 2:
+                print('\nData Buku Tidak Jadi Dihapus')
+    elif inputan_delete == 2:
         menu()
+    else:
+        print('\n\tNomor yang Dimasukkan Tidak Sesuai')
     delete()
-
-# EXIT
-def exit():
-    print('Sampai Jumpa')
 
 # MENU
 def menu():
     while True :
-        menuutama = input('''Menu Utama Perpustakaan
+        menuutama = input('''
+    Menu Utama Perpustakaan
         
-        Daftar Menu:
-        1. Daftar Data Buku
-        2. Menambah Data Buku
-        3. Mengubah Data Buku
-        4. Menghapus Data Buku
-        5. Keluar
+    Daftar Menu:
+    1. Daftar Data Buku
+    2. Menambah Data Buku
+    3. Mengubah Data Buku
+    4. Menghapus Data Buku
+    5. Keluar
         
-        Masukkan no Menu yang Diinginkan: ''')
+    Masukkan Nomor Menu yang Diinginkan: ''')
 
         if(menuutama == '1') :
             read()
         elif(menuutama == '2') :
-            add()
+            create()
         elif(menuutama == '3') :
             update()
         elif(menuutama == '4') :
             delete()
         elif(menuutama == '5') :
-            exit()
+            print('\n\tKELUAR DARI PROGRAM\n')
+            quit()
         else:
+            print('\nNomor yang Dimasukkan Tidak Sesuai')
             menu()
+
+menu()
